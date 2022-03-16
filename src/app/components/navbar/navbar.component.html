@@ -1,0 +1,24 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-vertical.png?hl=es-419" height="30" class="d-inline-block align-top" alt="">
+    Firebase App
+  </a>
+
+
+
+
+  <div ngbDropdown class="d-inline-block" *ngIf="user|async as user; else btnLogin">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+      <img *ngIf="user.photoURL" [src]="user.photoURL" height="30" class="d-inline-block align-top" alt="">
+    {{user.displayName ? user.displayName : user.email}}
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem (click)="logout()">Salir</button>
+    </div>
+  </div>
+
+
+  <ng-template #btnLogin>
+    <button class="btn btn-info" routerLink="login">Login</button>
+  </ng-template>
+</nav>

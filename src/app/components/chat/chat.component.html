@@ -1,0 +1,17 @@
+<div class="card text-center cardContainer" *ngIf="user">
+  <div class="card-header">
+    CHAT
+  </div>
+
+  <div class="card-body">
+    <p class="mensajeEnviado" [ngClass]="user.uid == mensaje.id ? 'mensajeEnviado' : 'mensajeRecibido'" *ngFor="let mensaje of mensajeList">{{mensaje.texto}}</p>
+  </div>
+
+  <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
+      <input type="text" class="form-control" placeholder="Escribe tu mensaje" [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true}">
+      <span class="input-group-text" (click)="enviarMensaje()">Enviar</span>
+  </form>
+
+
+</div>
+
